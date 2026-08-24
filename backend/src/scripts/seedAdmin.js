@@ -1,0 +1,3 @@
+import 'dotenv/config'; import { connectDatabase } from '../config/db.js'; import User from '../models/User.js';
+if (!process.env.ADMIN_EMAIL || !process.env.ADMIN_PASSWORD) throw new Error('Set ADMIN_EMAIL and ADMIN_PASSWORD in .env');
+await connectDatabase(); const email = process.env.ADMIN_EMAIL.toLowerCase(); const existing = await User.findOne({ email }).select('+password'); if (existing) { existing.name = process.env.ADMIN_NAME || 'Inventory Admin'; existing.password = process.env.ADMIN_PASSWORD; existing.role = 'admin'; await existing.save(); } else await User.create({ name: process.env.ADMIN_NAME || 'Inventory Admin', email, password: process.env.ADMIN_PASSWORD, role: 'admin' }); console.log('Admin user seeded'); process.exit(0);

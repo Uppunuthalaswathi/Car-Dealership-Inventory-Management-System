@@ -1,0 +1,2 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+@layer base { body { @apply bg-slate-100 text-slate-800; } input { @apply rounded border border-slate-300 px-3 py-2 outline-cyan-600; } }

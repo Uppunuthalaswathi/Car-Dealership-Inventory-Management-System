@@ -1,0 +1,5 @@
+{
+  "name": "car-dealership-inventory",
+  "private": true,
+  "scripts": { "backend": "npm --prefix backend run dev", "frontend": "npm --prefix frontend run dev", "test": "npm --prefix backend test", "coverage": "npm --prefix backend run coverage" }
+}
